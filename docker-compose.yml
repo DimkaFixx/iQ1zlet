@@ -9,10 +9,13 @@ services:
     # Благодаря строчке выше (./backend:/app), данные будут сохраняться.
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
     ports:
       - "5173:5173"
     environment:

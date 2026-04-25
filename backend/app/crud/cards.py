@@ -28,7 +28,7 @@ def create_mock_cards(db: Session):
         # Добавляем несколько карточек в эту колоду
         cards = [
             CardsModel(deck_id=mock_deck.id, first_side="Capital of France?", second_side="Paris"),
-            CardsModel(deck_id=mock_deck.id, first_side="2 + 2?", second_side="4"),
+            CardsModel(deck_id=mock_deck.id, first_side="2 + 2 = ?", second_side="4"),
             CardsModel(deck_id=mock_deck.id, first_side="Largest planet?", second_side="Jupiter"),
         ]
         db.add_all(cards)
