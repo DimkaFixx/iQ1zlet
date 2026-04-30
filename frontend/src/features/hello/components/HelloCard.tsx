@@ -1,4 +1,5 @@
 import { useHello } from '../hooks/useHello'
+import './HelloCard.css'
 
 export function HelloCard() {
   const { text, loading, error } = useHello()

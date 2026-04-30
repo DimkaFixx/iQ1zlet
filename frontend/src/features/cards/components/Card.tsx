@@ -1,21 +1,33 @@
-import { useCards } from '../hooks/useDeks'
-import { useParams } from 'react-router-dom'
+import { useState } from 'react'
+import type { Card as CardModel } from '../services/cardsService'
 
-export function Cards() {
-  const { uid } = useParams<{ uid: string }>()
-  const { deck, loading, error } = useCards(uid)
-  const firstCard = deck?.cards?.[0]
+interface CardProps {
+  card: CardModel
+}
+
+export function Card({ card }: CardProps) {
+  const [isFlipped, setIsFlipped] = useState(false)
+
+  const handleFlip = () => {
+    setIsFlipped((currentValue) => !currentValue)
+  }
 
   return (
-    <section className="hello-card" aria-live="polite">
-      <h1>React + FastAPI</h1>
-      <p className="hello-card__label">Ответ от сервера</p>
-      <p className="hello-card__value">
-        {loading ? 'Загрузка...' : error ?? deck?.name}
-      </p>
-      <p className="hello-card__value">
-        {loading ? 'Загрузка...' : error ?? (firstCard ? `${firstCard.firstSide} - ${firstCard.secondSide}` : 'Колода пуста')}
-      </p>
-    </section>
+    <button
+      type="button"
+      className={`flip-card${isFlipped ? ' flip-card--flipped' : ''}`}
+      onClick={handleFlip}
+      aria-pressed={isFlipped}
+    >
+      <span className="flip-card__inner">
+        <span className="flip-card__face flip-card__face--front">
+          <span className="flip-card__value">{card.firstSide}</span>
+        </span>
+
+        <span className="flip-card__face flip-card__face--back">
+          <span className="flip-card__value">{card.secondSide}</span>
+        </span>
+      </span>
+    </button>
   )
 }

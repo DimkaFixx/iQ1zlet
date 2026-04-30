@@ -1,0 +1,111 @@
+.cards-page {
+  background: radial-gradient(circle at top left, #4caf50, #f7f8fb 20%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.cards-page__header {
+  display: grid;
+  gap: 8px;
+}
+
+.cards-page__header h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 48px);
+  color: #162033;
+}
+
+.cards-page__header p {
+  margin: 0;
+  color: #5b657a;
+}
+
+.cards-page__owner {
+    margin: 0;
+    padding: 0;
+    margin-top: clamp(-15px, 1vw, -25px);
+    font-size: clamp(15px, 1vw, 30px);
+}
+
+.flip-card {
+  width: 40%;
+  min-width: 320px;
+  min-height: 320px;
+  height: clamp(320px, 62vh, 640px);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  perspective: 1400px;
+  cursor: pointer;
+}
+
+.flip-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.flip-card--flipped .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 28px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 14px 30px rgba(26, 39, 66, 0.12);
+  padding: 32px;
+  overflow: hidden;
+}
+
+.flip-card__face--front {
+  background: linear-gradient(160deg, #ffffff 0%, #eef5ff 100%);
+  border: 1px solid #d5ddeb;
+  transform: rotateY(0deg);
+}
+
+.flip-card__face--back {
+  background: linear-gradient(160deg, #ffffff 0%, #eef5ff 100%);
+  border: 1px solid #d5ddeb;
+  transform: rotateY(180deg);
+}
+
+.flip-card__label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: inherit;
+  opacity: 0.72;
+}
+
+.flip-card__value {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: inherit;
+}
+
+.flip-card:focus-visible .flip-card__face {
+  outline: 3px solid #7ea7ff;
+  outline-offset: 4px;
+}

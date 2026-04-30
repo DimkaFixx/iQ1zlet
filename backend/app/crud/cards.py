@@ -8,7 +8,7 @@ from app.schemas.cards import CardSchema
 def get_cards(deck_uid: str, db: Session):
     deck = db.query(DeckModel).filter(DeckModel.uid == deck_uid).first()
     if not deck:
-        return None  # Или можно выбросить исключение, если колода не найдена
+        raise Exception("Deck not found")
     cards = db.query(CardsModel).filter(CardsModel.deck_id == deck.id).all()
     owner_nickname = db.query(UserModel).filter(UserModel.id == deck.owner_id).first().nickname
     return DeckSchema(
