@@ -5,6 +5,8 @@ class Settings(BaseSettings):
     DATABASE_URL: str
     SECRET_KEY: str
     DEBUG: bool = False
+    HASH_NAME: str = "sha256"
+    HASH_ITERATIONS: int = 120000
     
     # Указываем, откуда брать данные
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
