@@ -2,11 +2,49 @@
   background: radial-gradient(circle at top left, #4caf50, #f7f8fb 20%);
   width: 100%;
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   text-align: center;
+}
+
+.cards-page__mode-switcher {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(26, 39, 66, 0.12);
+  border: 1px solid rgba(213, 221, 235, 0.72);
+}
+
+.cards-page__mode-btn {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: transparent;
+  color: #5b657a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cards-page__mode-btn--active {
+  background: linear-gradient(160deg, #ffffff 0%, #eef5ff 100%);
+  color: #162033;
+  box-shadow: 0 6px 16px rgba(26, 39, 66, 0.1);
+}
+
+.cards-page__mode-btn:focus-visible {
+  outline: 3px solid #7ea7ff;
+  outline-offset: 2px;
 }
 
 .cards-page__header {
@@ -108,4 +146,137 @@
 .flip-card:focus-visible .flip-card__face {
   outline: 3px solid #7ea7ff;
   outline-offset: 4px;
+}
+
+.cards-page__nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cards-page__nav-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  border: 1px solid #d5ddeb;
+  background: linear-gradient(160deg, #ffffff 0%, #f3f7ff 100%);
+  font-size: 20px;
+  color: #162033;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(26, 39, 66, 0.08);
+}
+
+.cards-page__answer-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 12px;
+  border: 1px solid #d5ddeb;
+  background: linear-gradient(160deg, #ffffff 0%, #f3f7ff 100%);
+  font-size: 24px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(26, 39, 66, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.cards-page__answer-btn--wrong {
+  color: #c0392b;
+}
+
+.cards-page__answer-btn--right {
+  color: #1b8f4a;
+}
+
+.cards-page__answer-btn:hover:not(:disabled),
+.cards-page__nav-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(26, 39, 66, 0.12);
+}
+
+.cards-page__answer-btn:focus-visible {
+  outline: 3px solid #7ea7ff;
+  outline-offset: 3px;
+}
+
+.cards-page__answer-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cards-page__nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cards-page__counter {
+  font-weight: 700;
+  color: #162033;
+  min-width: 64px;
+}
+
+/* Swipe animations */
+@keyframes swipeOutLeft {
+  to {
+    transform: translateX(-120%) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeOutRight {
+  to {
+    transform: translateX(120%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeInRight {
+  from {
+    transform: translateX(120%) rotate(8deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes swipeInLeft {
+  from {
+    transform: translateX(-120%) rotate(-8deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(0);
+    opacity: 1;
+  }
+}
+
+.cards-page__card-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.cards-page__card-area.swipe-exit-left .flip-card {
+  animation: swipeOutLeft 160ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.cards-page__card-area.swipe-exit-right .flip-card {
+  animation: swipeOutRight 160ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.cards-page__card-area.swipe-enter-right .flip-card {
+  animation: swipeInRight 160ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.cards-page__card-area.swipe-enter-left .flip-card {
+  animation: swipeInLeft 160ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
