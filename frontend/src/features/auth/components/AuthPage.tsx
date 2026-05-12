@@ -1,6 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useEffect, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { login, register } from '../services/authService'
+import { getCookie } from '../../../utils/cookies'
 import './AuthPage.css'
 
 type AuthMode = 'login' | 'register'
@@ -11,6 +12,32 @@ interface AuthPageProps {
 
 export function AuthPage({ mode }: AuthPageProps) {
   const navigate = useNavigate()
+  // Redirect away from auth pages if already logged in
+  function decodeJwtPayload(token: string | null) {
+    if (!token) return null
+    try {
+      const parts = token.split('.')
+      if (parts.length !== 3) return null
+      const payload = parts[1]
+      return JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')))
+    } catch {
+      return null
+    }
+  }
+
+  useEffect(() => {
+    const token = typeof window !== 'undefined' ? getCookie('access_token') || localStorage.getItem('access_token') : null
+    const payload = decodeJwtPayload(token)
+    if (payload) {
+      const exp = payload.exp ? Number(payload.exp) : null
+      const now = Date.now() / 1000
+      const valid = !exp || exp > now
+      const nickname = payload.nickname ?? null
+      if (valid && nickname) {
+        navigate(`/profile/${nickname}`)
+      }
+    }
+  }, [navigate])
   const isLogin = mode === 'login'
   const [identifier, setIdentifier] = useState('')
   const [nickname, setNickname] = useState('')

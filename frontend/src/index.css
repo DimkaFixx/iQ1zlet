@@ -79,7 +79,7 @@ button,
 }
 
 /* Hover and active */
-button:hover,
+button:not(.flip-card--plain):hover,
 .app-header__action:hover,
 .app-header__logout:hover,
 .btn-create:hover,
@@ -105,7 +105,7 @@ button:hover,
 }
 
 /* Pressed state */
-button:active,
+button:not(.flip-card--plain):active,
 .app-header__action:active,
 .app-header__logout:active,
 .btn-create:active,

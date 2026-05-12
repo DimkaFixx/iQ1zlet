@@ -77,6 +77,10 @@
   border: 0;
   padding: 0;
   background: transparent;
+  background-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  overflow: visible;
   perspective: 1400px;
   cursor: pointer;
 }
@@ -113,16 +117,20 @@
   box-shadow: 0 14px 30px rgba(26, 39, 66, 0.12);
   padding: 32px;
   overflow: hidden;
+  background: transparent;
+  background-color: transparent;
 }
 
 .flip-card__face--front {
-  background: linear-gradient(160deg, #ffffff 0%, #eef5ff 100%);
+  background: transparent;
+  background-color: transparent;
   border: 1px solid #d5ddeb;
   transform: rotateY(0deg);
 }
 
 .flip-card__face--back {
-  background: linear-gradient(160deg, #ffffff 0%, #eef5ff 100%);
+  background: transparent;
+  background-color: transparent;
   border: 1px solid #d5ddeb;
   transform: rotateY(180deg);
 }
@@ -195,8 +203,8 @@
 
 .cards-page__answer-btn:hover:not(:disabled),
 .cards-page__nav-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(26, 39, 66, 0.12);
+  transform: none;
+  box-shadow: 0 6px 18px rgba(26, 39, 66, 0.08);
 }
 
 .cards-page__answer-btn:focus-visible {
@@ -262,6 +270,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  background: transparent;
 }
 
 .cards-page__card-area.swipe-exit-left .flip-card {

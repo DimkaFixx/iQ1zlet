@@ -15,7 +15,7 @@ export function Card({ card }: CardProps) {
   return (
     <button
       type="button"
-      className={`flip-card${isFlipped ? ' flip-card--flipped' : ''}`}
+      className={`flip-card flip-card--plain${isFlipped ? ' flip-card--flipped' : ''}`}
       onClick={handleFlip}
       aria-pressed={isFlipped}
     >
