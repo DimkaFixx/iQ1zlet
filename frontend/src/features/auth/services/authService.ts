@@ -10,6 +10,9 @@ export interface AuthUser {
 export interface AuthResponse {
   message: string
   user: AuthUser
+  access_token?: string
+  token_type?: string
+  refresh_token?: string
 }
 
 export interface LoginPayload {
@@ -34,5 +37,12 @@ export function register(payload: RegisterPayload) {
   return apiRequest<AuthResponse>('/auth/register', {
     method: 'POST',
     body: payload,
+  })
+}
+
+export function refresh(refresh_token: string) {
+  return apiRequest<{ access_token: string }>('/auth/refresh', {
+    method: 'POST',
+    body: { refresh_token },
   })
 }

@@ -1,0 +1,117 @@
+.profile-page {
+  padding: 28px;
+}
+
+.profile-header h1 {
+  font-size: clamp(24px, 3.5vw, 32px);
+  margin-bottom: 12px;
+}
+
+.profile-actions {
+  margin-bottom: 18px;
+}
+
+.btn-create {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  background: linear-gradient(135deg, #1b8f4a, #3bc46f);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-section {
+  margin-top: 18px;
+}
+
+.decks-list {
+  list-style: none;
+  padding: 0;
+}
+
+.decks-list li + li {
+  margin-top: 8px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.profile-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 18px;
+  background: linear-gradient(180deg,#7ea7ff,#b2e1ff);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #0f1724;
+  font-size: 34px;
+  box-shadow: 0 10px 30px rgba(16,24,40,0.12);
+}
+
+.meta-text .nickname {
+  margin: 0;
+  font-size: 22px;
+}
+
+.meta-text .stats {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #52606d;
+  display: flex;
+  gap: 10px;
+}
+
+.profile-tabs {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.tab-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6eef8;
+  background: #fff;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: linear-gradient(90deg,#1b8f4a,#3bc46f);
+  color: white;
+  border-color: transparent;
+}
+
+.decks-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.deck-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  box-shadow: 0 8px 22px rgba(16,24,40,0.06);
+  border: 1px solid rgba(225,234,245,0.8);
+}
+
+.deck-title { margin: 0 0 8px 0; font-size: 16px }
+.deck-owner { margin: 0 0 12px 0; color: #6b7280; font-size: 13px }
+.deck-actions { display:flex; gap:8px }
+.btn-small { padding:6px 8px; border-radius:8px; background:#eef6ff; color:#1f4dbb; text-decoration:none; font-weight:700 }
+
+.loading { color:#4b5563 }
+

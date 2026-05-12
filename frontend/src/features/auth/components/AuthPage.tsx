@@ -30,12 +30,26 @@ export function AuthPage({ mode }: AuthPageProps) {
       if (isLogin) {
         const response = await login({ identifier, password })
         setMessage(response.message)
+        // Save tokens to localStorage as backup for cookies
+        if (response.access_token) {
+          localStorage.setItem('access_token', response.access_token)
+        }
+        if ((response as any).refresh_token) {
+          localStorage.setItem('refresh_token', (response as any).refresh_token)
+        }
         navigate('/')
         return
       }
 
       const response = await register({ nickname, email: email || undefined, password })
       setMessage(response.message)
+      // Save tokens to localStorage as backup for cookies
+      if (response.access_token) {
+        localStorage.setItem('access_token', response.access_token)
+      }
+      if ((response as any).refresh_token) {
+        localStorage.setItem('refresh_token', (response as any).refresh_token)
+      }
       navigate('/login')
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Что-то пошло не так')

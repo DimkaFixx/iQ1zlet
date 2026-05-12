@@ -26,3 +26,15 @@ class LoginRequest(BaseModel):
 class AuthResponse(BaseModel):
     message: str
     user: UserOut
+    access_token: str | None = None
+    refresh_token: str | None = None
+    token_type: str | None = None
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
+
+
+class RefreshResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
