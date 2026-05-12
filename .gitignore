@@ -11,4 +11,19 @@ node_modules/
 dist/
 .eslintcache
 
+.db
 *.db
+*.db/
+venv/
+
+# Ignore local database files
+# explicit DB name (if present)
+sql_app.db
+# common DB file patterns
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.sqlite-journal
+*.db-wal
+*.db-shm
