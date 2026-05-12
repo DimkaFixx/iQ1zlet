@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { AppHeader } from './components/layout/AppHeader'
 import { HomePage } from './features/home/components/HomePage'
 import { LoginPage } from './features/auth/components/LoginPage'
 import { RegisterPage } from './features/auth/components/RegisterPage'
@@ -11,6 +12,7 @@ function App() {
   return (
     <Router>
       <div className="app-shell">
+        <AppHeader />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />

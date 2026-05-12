@@ -21,5 +21,124 @@ body,
 }
 
 body {
-  background: radial-gradient(circle at top right, #e9f3ff, #f7f8fb 48%, #eef8f2);
+  position: relative;
+  isolation: isolate;
+  background: #eef2f7;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: -20vh -20vw;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at top left, #4caf50, #f7f8fb 30%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+}
+
+/* Button animation system - applied globally to buttons and button-like links */
+.button,
+button,
+.app-header__action,
+.app-header__logout,
+.btn-create,
+.tab-btn,
+.cards-page__nav-btn,
+.cards-page__answer-btn,
+.auth-form__submit,
+.btn-small,
+.deck-actions a,
+.app-header__action:link,
+.app-header__action:visited {
+  transition: box-shadow 180ms ease, opacity 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-header__action::after,
+.app-header__logout::after,
+.btn-create::after,
+.tab-btn::after,
+.cards-page__nav-btn::after,
+.cards-page__answer-btn::after,
+.auth-form__submit::after,
+.btn-small::after {
+  content: '';
+  position: absolute;
+  left: -10%;
+  top: 0;
+  height: 100%;
+  width: 120%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.06) 100%);
+  transform: skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+/* Hover and active */
+button:hover,
+.app-header__action:hover,
+.app-header__logout:hover,
+.btn-create:hover,
+.tab-btn:hover,
+.cards-page__nav-btn:hover,
+.cards-page__answer-btn:hover,
+.auth-form__submit:hover,
+.btn-small:hover {
+  /* removed movement: keep only glow */
+  box-shadow: 0 14px 36px rgba(26,39,66,0.12), 0 0 24px rgba(0,0,0,0.04);
+}
+
+.app-header__action:hover::after,
+.app-header__logout:hover::after,
+.btn-create:hover::after,
+.tab-btn:hover::after,
+.cards-page__nav-btn:hover::after,
+.cards-page__answer-btn:hover::after,
+.auth-form__submit:hover::after,
+.btn-small:hover::after {
+  /* keep static shine (no sliding animation) */
+  opacity: 1;
+}
+
+/* Pressed state */
+button:active,
+.app-header__action:active,
+.app-header__logout:active,
+.btn-create:active,
+.tab-btn:active,
+.cards-page__nav-btn:active,
+.cards-page__answer-btn:active,
+.auth-form__submit:active,
+.btn-small:active {
+  /* no movement on press; slightly reduce glow */
+  box-shadow: 0 6px 18px rgba(26,39,66,0.08);
+}
+
+/* Focus accessibility */
+:focus-visible {
+  outline: 3px solid rgba(126,167,255,0.85);
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .app-header__action,
+  .app-header__logout,
+  .btn-create,
+  .tab-btn,
+  .cards-page__nav-btn,
+  .cards-page__answer-btn,
+  .auth-form__submit,
+  .btn-small {
+    transition: none !important;
+  }
+  .app-header__action::after,
+  .app-header__logout::after,
+  .btn-create::after,
+  .tab-btn::after { display: none; }
 }

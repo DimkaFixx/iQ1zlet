@@ -1,0 +1,89 @@
+.app-header {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(213, 221, 235, 0.72);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 14px 36px rgba(26, 39, 66, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.app-header__brand {
+  color: #162033;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.app-header__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 118px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid #d5ddeb;
+  background: linear-gradient(160deg, #ffffff 0%, #f3f7ff 100%);
+  color: #162033;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(26, 39, 66, 0.08);
+}
+
+.app-header__logout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 98px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid #d5ddeb;
+  background: #fff;
+  color: #c0392b;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(26, 39, 66, 0.08);
+}
+
+.app-header__brand:focus-visible,
+.app-header__action:focus-visible,
+.app-header__logout:focus-visible {
+  outline: 3px solid #7ea7ff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 12px 14px;
+  }
+
+  .app-header__action {
+    min-width: 92px;
+  }
+
+  .app-header__logout {
+    min-width: 82px;
+  }
+}

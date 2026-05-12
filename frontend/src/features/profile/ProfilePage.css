@@ -7,15 +7,26 @@
   margin-bottom: 12px;
 }
 
-.profile-actions {
+.profile-tabs {
+  display: flex;
+  gap: 12px;
   margin-bottom: 18px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tab-btns {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+    
 }
 
 .btn-create {
   padding: 10px 14px;
   border-radius: 10px;
   border: 0;
-  background: linear-gradient(135deg, #1b8f4a, #3bc46f);
+  background: #1B8F4A;
   color: white;
   font-weight: 700;
   cursor: pointer;
@@ -47,19 +58,6 @@
   gap: 14px;
 }
 
-.avatar {
-  width: 86px;
-  height: 86px;
-  border-radius: 18px;
-  background: linear-gradient(180deg,#7ea7ff,#b2e1ff);
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  color: #0f1724;
-  font-size: 34px;
-  box-shadow: 0 10px 30px rgba(16,24,40,0.12);
-}
-
 .meta-text .nickname {
   margin: 0;
   font-size: 22px;
@@ -88,7 +86,7 @@
 }
 
 .tab-btn.active {
-  background: linear-gradient(90deg,#1b8f4a,#3bc46f);
+  background: #1B8F4A;
   color: white;
   border-color: transparent;
 }

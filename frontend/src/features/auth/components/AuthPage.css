@@ -1,12 +1,11 @@
 .auth-page {
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 24px;
-  background:
-    radial-gradient(circle at top left, rgba(76, 175, 80, 0.12), transparent 28%),
-    linear-gradient(160deg, #f7f8fb 0%, #eef5ff 100%);
+  flex-grow: 1;
 }
 
 .auth-card {

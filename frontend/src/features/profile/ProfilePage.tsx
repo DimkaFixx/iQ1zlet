@@ -85,7 +85,6 @@ export function ProfilePage() {
     <main className="profile-page">
       <header className="profile-top">
         <div className="profile-meta">
-          <div className="avatar">{myNickname.slice(0, 1).toUpperCase()}</div>
           <div className="meta-text">
             <h1 className="nickname">{myNickname}</h1>
             <div className="stats">
@@ -94,15 +93,16 @@ export function ProfilePage() {
             </div>
           </div>
         </div>
-
-        <div className="profile-actions">
-          <button onClick={handleCreate} className="btn-create">Создать колоду</button>
-        </div>
       </header>
 
       <nav className="profile-tabs">
-        <button className={"tab-btn " + (tab === 'mine' ? 'active' : '')} onClick={() => setTab('mine')}>Мои колоды</button>
-        <button className={"tab-btn " + (tab === 'available' ? 'active' : '')} onClick={() => setTab('available')}>Доступные</button>
+        <div className="tab-btns">
+            <button className={"tab-btn " + (tab === 'mine' ? 'active' : '')} onClick={() => setTab('mine')}>Мои колоды</button>
+            <button className={"tab-btn " + (tab === 'available' ? 'active' : '')} onClick={() => setTab('available')}>Доступные</button>
+        </div>
+        <div className="create-deck-but">
+            <button onClick={handleCreate} className="btn-create">Создать колоду</button>
+        </div>
       </nav>
 
       <section className="decks-grid">
